@@ -1,0 +1,6 @@
+framework module CPBharakoshWrapperiOS {
+  umbrella header "CPBharakoshWrapperiOS.h"
+  export *
+
+  module * { export * }
+}

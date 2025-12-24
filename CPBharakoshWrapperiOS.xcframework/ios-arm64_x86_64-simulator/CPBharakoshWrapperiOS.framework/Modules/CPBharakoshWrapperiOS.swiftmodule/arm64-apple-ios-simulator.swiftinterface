@@ -1,0 +1,52 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name CPBharakoshWrapperiOS
+@_exported import CPBharakoshWrapperiOS
+import Foundation
+import PayUCheckoutProBaseKit
+import PayUCheckoutProKit
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public protocol BharatkoshWrapperCallback : AnyObject {
+  func onSuccess(encryptedResponse: Swift.String)
+  func onFailure(encryptedResponse: Swift.String)
+  func onCancel(encryptedResponse: Swift.String)
+  func onError(encryptedResponse: Swift.String)
+}
+public protocol CheckoutProCallback : AnyObject {
+  func onSuccess(response: Any?)
+  func onFailure(response: Any?)
+  func onCancel()
+  func onError(error: Swift.String)
+}
+#if compiler(>=5.3) && $NoncopyableGenerics
+extension Swift.Result {
+  @inlinable internal func fold(onSuccess: (Success) -> Swift.Void, onFailure: (Failure) -> Swift.Void) {
+        switch self {
+        case .success(let value):
+            onSuccess(value)
+        case .failure(let error):
+            onFailure(error)
+        }
+    }
+}
+#else
+extension Swift.Result {
+  @inlinable internal func fold(onSuccess: (Success) -> Swift.Void, onFailure: (Failure) -> Swift.Void) {
+        switch self {
+        case .success(let value):
+            onSuccess(value)
+        case .failure(let error):
+            onFailure(error)
+        }
+    }
+}
+#endif
+@_hasMissingDesignatedInitializers public class BharatkoshWrapper {
+  public static let shared: CPBharakoshWrapperiOS.BharatkoshWrapper
+  public func startPayment(viewController: UIKit.UIViewController, encrequestparameter: Swift.String, reqdigitalsignature: Swift.String, merchIdVal: Swift.String, isProduction: Swift.Bool, callback: any CPBharakoshWrapperiOS.BharatkoshWrapperCallback)
+  @objc deinit
+}
