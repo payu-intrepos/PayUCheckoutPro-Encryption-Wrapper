@@ -51,7 +51,7 @@ podTrunkPush() {
 }
 
 podName="PayUIndia-CP-Encryption-SDK"
-podVersion="1.0.0.alpha.2"
+podVersion="1.0.0"
 
 podSpec="${podName}.podspec"
 tag="${podVersion}"

@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name CPBharakoshWrapperiOS
+// swift-compiler-version: Apple Swift version 6.2 effective-5.10 (swiftlang-6.2.0.19.9 clang-1700.3.19.1)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name CPBharakoshWrapperiOS
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
 @_exported import CPBharakoshWrapperiOS
 import Foundation
 import PayUCheckoutProBaseKit
@@ -17,23 +18,16 @@ public protocol BharatkoshWrapperCallback : AnyObject {
   func onError(encryptedResponse: Swift.String)
 }
 public protocol CheckoutProCallback : AnyObject {
+  #if compiler(>=5.3) && $NonescapableTypes
   func onSuccess(response: Any?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   func onFailure(response: Any?)
+  #endif
   func onCancel()
   func onError(error: Swift.String)
 }
-#if compiler(>=5.3) && $NoncopyableGenerics
-extension Swift.Result {
-  @inlinable internal func fold(onSuccess: (Success) -> Swift.Void, onFailure: (Failure) -> Swift.Void) {
-        switch self {
-        case .success(let value):
-            onSuccess(value)
-        case .failure(let error):
-            onFailure(error)
-        }
-    }
-}
-#else
+#if compiler(>=5.3) && $NonescapableTypes
 extension Swift.Result {
   @inlinable internal func fold(onSuccess: (Success) -> Swift.Void, onFailure: (Failure) -> Swift.Void) {
         switch self {

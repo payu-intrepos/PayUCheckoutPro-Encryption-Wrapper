@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                = "PayUIndia-CP-Encryption-SDK"
-  s.version             = "1.0.0.alpha.2"
+  s.version             = "1.0.0"
   s.license             = "MIT"
   s.homepage            = "https://github.com/payu-intrepos/PayUCheckoutPro-Encryption-Wrapper"
   s.author              = { "PayU" => "contact@payu.in"  }
@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.platform            = :ios , "13.0"
   s.vendored_frameworks = 'CPBharakoshWrapperiOS.xcframework'
 
-  s.dependency            'PayUIndia-CheckoutPro', '~> 9.0'
+  s.dependency            'PayUIndia-CheckoutPro', '~> 9.2'
 end

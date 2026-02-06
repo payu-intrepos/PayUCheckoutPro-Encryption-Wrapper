@@ -14,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(name: "PayUCheckoutProKit",url: "https://github.com/payu-intrepos/PayUCheckoutPro-iOS",from: "9.0.0")
+        .package(name: "PayUCheckoutProKit",url: "https://github.com/payu-intrepos/PayUCheckoutPro-iOS",from: "9.2.1")
     ],
     targets: [
         
